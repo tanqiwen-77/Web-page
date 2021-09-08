@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>给石大的一封情书</title>
+    <link rel="stylesheet" href="rotate.css">
+</head>
+<body>
+   
+    <div id="main" >你好</div>
+</body>
+<script >
+var main=document.getElementById('main')
+    setTimeout(() =>{
+  main.innerHTML=""
+  main.style.left=0
+  let logo = document.createElement('div')
+  logo.setAttribute('class','logo')
+  logo.innerHTML='<p>一朝石大人,终生石大魂</p>'
+  main.appendChild(logo)
+  console.log(logo)
+  setTimeout(() =>{
+    let logo1 = document.createElement('div')
+  logo1.setAttribute('class','logo1')
+    logo1.innerHTML='<div class="container"><a href="#"><img src="static/images/0.jpg" /></a><a href="#"><img src="static/images/1.jpg" /></a><a href="#"><img src="static/images/2.jpg" /></a><a href="#"><img src="static/images/3.jpg" /></a><a href="#"><img src="static/images/4.jpg" /></a><a href="#"><img src="static/images/5.jpg" /></a><a href="#"><img src="static/images/6.jpg" /></a><a href="#"><img src="static/images/7.jpg" /></a><a href="#"><img src="static/images/8.jpg" /></a></div>'
+    console.log(logo1)
+    main.appendChild(logo1)
+  },4000)
+},2000)
+</script>
+<style>
+    .main{height: 500px;}
+    .logo1{
+    
+    background-color: aqua;
+    perspective: 800px;
+    perspective-origin: center 30%;}
+    .logo{
+    
+    font-family: 华文行楷;
+    font-size: 40px;
+    
+    text-align: center;
+    
+    
+    perspective: 800px;
+    height: 100px;
+    line-height: 100px;
+    margin-top: 250px;
+    width: 500px;
+    margin: 0 auto;
+    perspective-origin: center 30%;
+    
+}
+
+.logo p{
+animation:line4 4s;
+opacity: 0;
+}
+@keyframes line4{
+    0%{
+        opacity: 0;
+        
+    }
+    50%{
+       
+        opacity: 1;
+        
+}
+    100%{
+       
+        opacity: 0;
+        
+}
+
+    }
+</style>
+</html>

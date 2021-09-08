@@ -1,0 +1,291 @@
+﻿<!--
+*项目名: 给石大的一封情书
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>给石大的一封情书</title>
+    <link rel="stylesheet" href="static/css/prism.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="rotate.css">
+    <style id="styleContent"></style>
+</head>
+<body>
+    <pre id="codeEdit" class="language-css" onscroll="toggleScrollBar(event)"></pre>
+    <div id="resume" onscroll="toggleScrollBar(event)"></div>
+</body>
+<script src="static/js/textarr.js"></script>
+<script src="static/js/write.js"></script>
+<script>
+    let currentIndex_ = 0
+    let message=[{
+        text:'回望过去',
+        url:'static/images/0.jpg'
+    },
+    {
+        text:'四年相伴',
+        url:"static/images/1.jpg"
+    },
+    {
+        text:'犹记当时',
+        url:"static/images/2.jpg"
+    },
+    {
+        text:'初次相遇',
+        url:"static/images/3.jpg"
+    },
+    {
+        text:'满怀憧憬与不安',
+        url:"static/images/4.jpg"
+    },
+    {
+        text:'来到这里',
+        url:"static/images/5.jpg"
+    },
+    {
+        text:'阳光正好',
+        url:'static/images/6.jpg'
+    },
+    {
+        text:'你我相拥',
+        url:'static/images/7.jpg'
+    },
+    {
+        text:'心生向往',
+        url:'static/images/8.jpg'
+    },
+    {
+        text:'忆初时迷茫',
+        url:'static/images/9.jpg'
+    },
+    {
+        text:'记青涩年华',
+        url:'static/images/10.jpg'
+    },
+    {
+        text:'纵使心有胆怯',
+        url:'static/images/11.jpg'
+    },
+    {
+        text:'却有你的鼓励',
+        url:'static/images/12.jpg'
+    },
+    {
+        text:'纵使前路困难重重',
+        url:'static/images/13.jpg'
+    },
+    {
+        text:'却有你给予的勇气',
+        url:'static/images/14.jpg'
+    },
+    {
+        text:'感谢你温暖岁月',
+        url:'static/images/15.jpg'
+    },
+    {
+        text:'彼时未来',
+        url:'static/images/16.jpg'
+    },
+    {
+        text:'深情依旧',
+        url:'static/images/17.jpg'
+    },
+    {
+        text:'藏于心间',
+        url:'static/images/18.jpg'
+    },
+    {
+        text:'铭记校训',
+        url:'static/images/19.png'
+    },
+    {
+        text:'志存高远',
+        url:'static/images/20.jpg'
+    },
+    {
+        text:'勤勤恳恳',
+        url:'static/images/21.jpg'
+    },
+    {
+        text:'脚踏实地',
+        url:'static/images/22.jpg'
+    },
+    {
+        text:'石大人石大魂',
+        url:'static/images/23.jpg'
+    }
+    ]
+    let arr=[
+        {
+num:-400,
+index:0
+        },
+        {
+num:-800,
+index:1
+        },
+        {
+num:-1200,
+index:2
+         },
+    ]
+    function writeIntro (intro='', time, callback) {
+        let connect = document.querySelectorAll('.connect')
+        if(connect.length < 1){
+            resume.innerHTML = intro
+        }else{
+            connect[connect.length-1].innerHTML = intro
+        }
+        setTimeout(() => {
+            callback()
+        }, time);
+    }
+    function startResume () {
+        writeIntro(balloon, 700, ()=>{
+            writeIntro(line, 200, ()=>{
+                writeIntro(text, 0, ()=>{
+                    writeText(textArr[currentIndex_])
+                })
+            })
+        })
+    }
+    
+    let num = 0
+    let t = setInterval(() => {
+        if(num <= style.length){
+            codeEdit.innerHTML = Prism.highlight(style.substr(0, num), Prism.languages.css); 
+            codeEdit.scrollTop = 100000
+            styleContent.innerHTML = style.substr(0, num)
+            num++
+        }else{
+            clearInterval(t)
+        }
+    }, 120)
+    setTimeout(() => {
+        if(document.body.clientWidth < 500){
+            setTimeout(() => {
+                resume.style.cssText = 'height:70vh!important'
+            }, 5000);
+        }
+        startResume()
+        
+    }, 1)
+    setTimeout(() =>{
+        var main=document.querySelector('.main');
+    console.log(main)
+    for(var i=0;i<message.length;i++){
+    
+    let ele = document.createElement('div')
+    let image=document.createElement('img')
+    let text=document.createElement('p')
+    ele.setAttribute('class','ele')
+    image.setAttribute('class','tu')
+    text.setAttribute('class','text')
+    image.src=message[i].url
+    console.log(image.src)
+    text.innerHTML=message[i].text
+    console.log( text.innerHTML)
+    ele.appendChild(image)
+    ele.appendChild(text)
+    ele.index=i
+    setTimeout(() =>{
+        if(ele.index%2==0)
+            {
+                ele.style.bottom='30px'
+                
+            }
+            else
+            ele.style.bottom='200px'
+            ele.style.left=(120*2*ele.index)+'px'
+            console.log(ele.style.left)
+            console.log(ele.style.bottom)
+            main.appendChild(ele)
+            
+        },(2*i)*5000)
+    }
+    for(var i=0;i<message.length-1;i++){
+        let line = document.createElement('div')
+        line.index=i
+        
+        
+        if(i%2==0)
+        line.setAttribute('class','left')
+        else
+        line.setAttribute('class','right')
+        setTimeout(() =>{
+            line.style.left=(120*(2*line.index+1))+'px'
+            console.log(line.style.left)
+            main.appendChild(line)
+            
+        },(2*i+1)*5000)
+
+    }
+
+    setTimeout(() =>{
+       let m=setInterval(() => {
+           if(main.offsetLeft<=-5400)
+           {
+            clearInterval(m)
+            main.innerHTML=""
+  main.style.left='0px'
+  main.style.width='700px'
+  console.log(main.style.width)
+  console.log( main.style.left)
+  let logo = document.createElement('div')
+  logo.setAttribute('class','logo')
+  logo.innerHTML='<p>一朝石大人,终生石大魂</p>'
+  main.appendChild(logo)
+  console.log(logo)
+  setTimeout(() =>{
+    let logo1 = document.createElement('div')
+    logo1.setAttribute('class','logo1')
+    logo1.innerHTML='<div class="container"><a href="#"><img src="static/images/0.jpg" /></a><a href="#"><img src="static/images/1.jpg" /></a><a href="#"><img src="static/images/2.jpg" /></a><a href="#"><img src="static/images/3.jpg" /></a><a href="#"><img src="static/images/4.jpg" /></a><a href="#"><img src="static/images/5.jpg" /></a><a href="#"><img src="static/images/6.jpg" /></a><a href="#"><img src="static/images/7.jpg" /></a><a href="#"><img src="static/images/8.jpg" /></a></div>'
+    console.log(logo1)
+    main.appendChild(logo1)
+  },4000)
+           
+        }
+        else if(main.offsetLeft<=-4800)
+           main.style.left=(main.offsetLeft-40)+'px'
+        else if(main.offsetLeft<=-4200)
+           main.style.left=(main.offsetLeft-45)+'px'
+           else if(main.offsetLeft<=-3700)
+           main.style.left=(main.offsetLeft-55)+'px'
+           else if(main.offsetLeft<=-3000)
+           main.style.left=(main.offsetLeft-55)+'px'
+           else if(main.offsetLeft<=-2500)
+           main.style.left=(main.offsetLeft-55)+'px'
+           else if(main.offsetLeft<=-1500)
+           main.style.left=(main.offsetLeft-45)+'px'
+           
+           else
+            main.style.left=(main.offsetLeft-70)+'px'
+            console.log(main.offsetLeft)
+            
+        },1)
+    },22000)
+
+
+    },18000)
+    
+</script>
+<script src="static/js/prism.js"></script>
+<script>
+    let sbTimer = null
+    function toggleScrollBar (self) {
+        self = self.target
+        clearTimeout(sbTimer)
+
+        if(self.getAttribute('class') != 'sbShow')
+            self.classList.add('sbShow')
+
+        sbTimer = setTimeout(() => {
+            self.classList.remove('sbShow')
+        }, 800);
+    }
+</script>
+</html>
